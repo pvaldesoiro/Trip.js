@@ -934,7 +934,7 @@
   display: none;
   padding: 8px;
   position: absolute;
-  text-align: center;
+  text-align: justify;
   min-width: 100px;
   border-radius: 3px; }
   .trip-block:before {
@@ -1153,21 +1153,23 @@
     margin: 0px;
     border-radius: 3px 3px 0px 0px;
     padding: 5px; }
+    .trip-block.yeti .trip-header .trip-title {
+      display: inline; }
   .trip-block.yeti .trip-content {
-    font-size: 12px;
+    font-size: 16px;
     padding: 15px;
     max-width: 450px; }
   .trip-block.yeti .trip-close {
     right: 0px;
     top: 0px;
-    margin: 3px 8px 0px 0px;
+    margin: 1px 8px 0px 0px;
     color: #fff;
     font-size: 16px; }
     .trip-block.yeti .trip-close:hover {
       color: #000; }
   .trip-block.yeti .trip-progress-wrapper .trip-prev,
   .trip-block.yeti .trip-progress-wrapper .trip-next {
-    font-size: 12px;
+    font-size: 16px;
     color: #fff; }
   .trip-block.yeti .trip-progress-wrapper .trip-prev:hover,
   .trip-block.yeti .trip-progress-wrapper .trip-next:hover {

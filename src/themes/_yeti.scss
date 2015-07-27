@@ -33,10 +33,14 @@
     margin: 0px;
     border-radius: 3px 3px 0px 0px;
     padding: 5px;
+
+    .trip-title {
+      display: inline;
+    }
   }
 
   .trip-content {
-    font-size: 12px;
+    font-size: 16px;
     padding: 15px;
     max-width: 450px;
   }
@@ -44,7 +48,7 @@
   .trip-close {
     right: 0px;
     top: 0px;
-    margin:3px 8px 0px 0px;
+    margin:1px 8px 0px 0px;
     color: #fff;
     font-size: 16px;
 
@@ -56,7 +60,7 @@
   .trip-progress-wrapper {
     .trip-prev,
     .trip-next {
-      font-size: 12px;
+      font-size: 16px;
       color:#fff;
     }
 

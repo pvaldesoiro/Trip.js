@@ -253,7 +253,10 @@
       tripBlockHTML: [
         '<div class="trip-block">',
           '<a href="#" class="trip-close"></a>',
-          '<div class="trip-header"></div>',
+          '<div class="trip-header">',
+            '<div class="trip-title"></div>',
+            '<a href="#" class="trip-close"></a>',
+          '</div>',
           '<div class="trip-content"></div>',
           '<div class="trip-progress-wrapper">',
             '<div class="trip-progress-bar"></div>',
@@ -608,19 +611,10 @@
       var that = this;
       this.tripDirection = 'prev';
 
-      // When this is executed, it means users click on the arrow key to
-      // navigate back to previous trip. In that scenario, this is the better
-      // place to call onTripEnd before modifying tripIndex.
-      var tripObject = this.getCurrentTripObject();
-      var tripEnd = tripObject.onTripEnd || this.settings.onTripEnd;
-      var tripEndDefer = tripEnd(this.tripIndex, tripObject);
-
-      $.when(tripEndDefer).then(function() {
-        if (!that.isFirst() && that.canGoPrev()) {
-          that.decreaseIndex();
-        }
-        that.run();
-      });
+      if (!that.isFirst() && that.canGoPrev()) {
+        that.decreaseIndex();
+      }
+      that.run();
     },
 
     /**
@@ -1041,7 +1035,7 @@
       var header = o.header || this.settings.header;
 
       $tripBlock
-        .find('.trip-header')
+        .find('.trip-header .trip-title')
         .html(this.getReplacedTripContent(header))
         .toggle(showHeader);
 
@@ -1257,20 +1251,10 @@
         zIndex: this.settings.overlayZindex + 1
       });
 
-      var windowHeight = $(window).height();
-      var windowTop = $(window).scrollTop();
       var tripBlockTop = this.$tripBlock.offset().top;
-      var tripBlockHeight = this.$tripBlock.height();
-      var OFFSET = 100; // make it look nice
+      var OFFSET = 50; // make it look nice
 
-      if (tripBlockTop + tripBlockHeight < windowTop + windowHeight &&
-        tripBlockTop >= windowTop) {
-          // tripBlock is located inside the current screen,
-          // so we don't have to scroll
-      }
-      else {
-        this.$root.animate({ scrollTop: tripBlockTop - OFFSET }, 'slow');
-      }
+      this.$root.animate({ scrollTop: tripBlockTop - OFFSET }, 'slow');
     },
 
     /**
